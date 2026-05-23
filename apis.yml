@@ -1,0 +1,138 @@
+aid: openhands
+name: OpenHands
+description: OpenHands (by All Hands AI, formerly OpenDevin) is an open-source autonomous coding agent platform. Ships as a Python Agent SDK, CLI, local GUI with a REST API, Docker images, and a hosted cloud at app.all-hands.dev plus a self-hosted Kubernetes Enterprise tier. Core code is MIT licensed at github.com/OpenHands/OpenHands with 75K+ stars.
+image: https://www.openhands.dev/og-image.png
+tags:
+  - AI
+  - Agents
+  - Autonomous
+  - Open Source
+  - Developer Tools
+  - Software Engineering
+  - Code Generation
+created: '2026-05-23'
+modified: '2026-05-23'
+specificationVersion: '0.18'
+position: Consuming
+kind: contract
+access: Open-Source
+apis:
+  - aid: openhands:agent-sdk
+    name: OpenHands Agent SDK
+    description: Composable Python SDK for defining, running, and orchestrating agents locally or scaled to thousands in the cloud. Source at github.com/All-Hands-AI/agent-sdk.
+    tags:
+      - SDK
+      - Python
+      - Agents
+    properties:
+      - url: https://docs.openhands.dev/sdk
+        type: Documentation
+      - url: https://github.com/All-Hands-AI/agent-sdk
+        type: SourceCode
+  - aid: openhands:cli
+    name: OpenHands CLI
+    description: Command-line interface for running OpenHands agents with Claude, GPT, or any other LLM. Source at github.com/OpenHands/OpenHands-CLI.
+    tags:
+      - CLI
+      - Agents
+    properties:
+      - url: https://docs.openhands.dev/usage/getting-started
+        type: Documentation
+      - url: https://github.com/OpenHands/OpenHands-CLI
+        type: SourceCode
+  - aid: openhands:local-gui-rest
+    name: OpenHands Local GUI REST API
+    description: Local React application with a REST API behind it for driving agents from the desktop. Shipped via Docker and the main OpenHands repo.
+    tags:
+      - REST
+      - GUI
+      - Local
+    properties:
+      - url: https://docs.openhands.dev/
+        type: Documentation
+      - url: https://github.com/OpenHands/OpenHands
+        type: SourceCode
+  - aid: openhands:cloud
+    name: OpenHands Cloud
+    description: Hosted OpenHands platform at app.all-hands.dev with a free tier (Minimax model), GitHub/GitLab/Bitbucket integrations, and Slack/Jira/Linear connectors.
+    tags:
+      - Cloud
+      - SaaS
+      - Hosted
+    properties:
+      - url: https://app.all-hands.dev
+        type: Portal
+      - url: https://docs.openhands.dev/
+        type: Documentation
+common:
+  - url: https://www.openhands.dev/
+    type: Website
+  - url: https://app.all-hands.dev
+    type: Portal
+  - url: https://docs.openhands.dev/
+    type: Documentation
+  - url: https://docs.openhands.dev/llms.txt
+    type: LLMsTxt
+  - url: https://docs.openhands.dev/usage/getting-started
+    type: GettingStarted
+  - url: https://docs.openhands.dev/sdk
+    type: SDK
+  - url: https://github.com/OpenHands/OpenHands
+    type: SourceCode
+  - url: https://github.com/All-Hands-AI/OpenHands
+    type: SourceCode
+  - url: https://github.com/All-Hands-AI/agent-sdk
+    type: SourceCode
+  - url: https://github.com/OpenHands/OpenHands-CLI
+    type: SourceCode
+  - url: https://github.com/orgs/openhands/projects/1
+    type: Roadmap
+  - url: https://github.com/OpenHands
+    type: GitHubOrganization
+  - url: https://github.com/All-Hands-AI
+    type: GitHubOrganization
+  - url: https://dub.sh/openhands
+    type: Slack
+  - url: https://www.openhands.dev/contact
+    type: Contact
+  - url: https://jobs.ashbyhq.com/OpenHands
+    type: Careers
+  - url: https://www.openhands.dev/blog
+    type: Blog
+  - url: https://www.openhands.dev/privacy
+    type: PrivacyPolicy
+  - url: https://www.openhands.dev/terms
+    type: TermsOfService
+  - url: https://x.com/OpenHandsDev
+    type: X (Twitter)
+  - url: https://github.com/OpenHands/OpenHands/blob/main/LICENSE
+    type: License
+  - type: Features
+    data:
+      - Open-source autonomous coding agent under MIT license
+      - Python Agent SDK for embedding agents into custom apps
+      - CLI for terminal-based agent pair programming
+      - Local desktop GUI with REST API
+      - Docker images for one-command local deploy
+      - Hosted cloud with free tier (Minimax model)
+      - Self-hosted Enterprise on Kubernetes in private VPC
+      - Works with Claude, GPT, and any LLM provider
+      - GitHub, GitLab, Bitbucket integrations
+      - Slack, Jira, Linear connectors (Cloud/Enterprise)
+      - Multi-user RBAC for Enterprise
+      - Conversation sharing and collaboration
+      - Sandboxed, auditable execution environments
+      - 75K+ GitHub stars, 9.5K+ forks, 100+ releases
+      - Use cases include vuln scanning, PR review, legacy migration, incident triage, test expansion, docs automation
+    sources:
+      - https://www.openhands.dev/
+      - https://docs.openhands.dev/
+      - https://github.com/OpenHands/OpenHands
+    updated: '2026-05-23'
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+  - FN: APIs.json
+    email: info@apis.io
+  - name: All Hands AI
+    url: https://www.openhands.dev/
