@@ -72,11 +72,11 @@ common:
   - url: https://docs.openhands.dev/
     type: Documentation
   - url: https://docs.openhands.dev/llms.txt
-    type: LLMsTxt
+    type: LlmsText
   - url: https://docs.openhands.dev/usage/getting-started
     type: GettingStarted
   - url: https://docs.openhands.dev/sdk
-    type: SDK
+    type: SDKs
   - url: https://github.com/OpenHands/OpenHands
     type: SourceCode
   - url: https://github.com/All-Hands-AI/OpenHands
@@ -86,7 +86,7 @@ common:
   - url: https://github.com/OpenHands/OpenHands-CLI
     type: SourceCode
   - url: https://github.com/orgs/openhands/projects/1
-    type: Roadmap
+    type: RoadMap
   - url: https://github.com/OpenHands
     type: GitHubOrganization
   - url: https://github.com/All-Hands-AI
