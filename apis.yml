@@ -65,6 +65,12 @@ apis:
       - url: https://docs.openhands.dev/
         type: Documentation
 common:
+  - type: VulnerabilityDisclosure
+    url: security/openhands-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/openhands-domain-security.yml
+  - type: Authentication
+    url: authentication/openhands-authentication.yml
   - url: https://www.openhands.dev/
     type: Website
   - url: https://app.all-hands.dev
