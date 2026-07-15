@@ -65,6 +65,8 @@ apis:
       - url: https://docs.openhands.dev/
         type: Documentation
 common:
+  - type: AgenticAccess
+    url: agentic-access/openhands-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/openhands-vulnerability-disclosure.yml
   - type: DomainSecurity
