@@ -1,0 +1,42 @@
+openapi: 3.1.0
+info:
+  title: OpenHands Add Git Providers Reset Settings API
+  description: 'OpenHands: Code Less, Make More'
+  version: 0.53.0
+servers:
+- url: https://app.all-hands.dev
+  description: Production server
+- url: http://localhost:3000
+  description: Local development server
+tags:
+- name: Reset Settings
+paths:
+  /api/reset-settings:
+    post:
+      summary: Reset Settings
+      description: Resets user settings. (Deprecated)
+      operationId: reset_settings_api_reset_settings_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '410':
+          description: Reset settings functionality has been removed
+          content:
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
+                title: Response 410 Reset Settings Api Reset Settings Post
+      security:
+      - APIKeyHeader: []
+      tags:
+      - Reset Settings
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Session-API-Key

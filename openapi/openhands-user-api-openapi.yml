@@ -1,0 +1,544 @@
+openapi: 3.1.0
+info:
+  title: OpenHands Add Git Providers User API
+  description: 'OpenHands: Code Less, Make More'
+  version: 0.53.0
+servers:
+- url: https://app.all-hands.dev
+  description: Production server
+- url: http://localhost:3000
+  description: Local development server
+tags:
+- name: User
+paths:
+  /api/user/installations:
+    get:
+      summary: Get User Installations
+      operationId: get_user_installations_api_user_installations_get
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: provider
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/ProviderType'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                title: Response Get User Installations Api User Installations Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - User
+  /api/user/repositories:
+    get:
+      summary: Get User Repositories
+      operationId: get_user_repositories_api_user_repositories_get
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+          default: pushed
+          title: Sort
+      - name: selected_provider
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/ProviderType'
+          - type: 'null'
+          title: Selected Provider
+      - name: page
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Page
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Per Page
+      - name: installation_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Installation Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Repository'
+                title: Response Get User Repositories Api User Repositories Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - User
+  /api/user/info:
+    get:
+      summary: Get User
+      operationId: get_user_api_user_info_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      security:
+      - APIKeyHeader: []
+      tags:
+      - User
+  /api/user/search/repositories:
+    get:
+      summary: Search Repositories
+      operationId: search_repositories_api_user_search_repositories_get
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: query
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Query
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 5
+          title: Per Page
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+          default: stars
+          title: Sort
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          default: desc
+          title: Order
+      - name: selected_provider
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - $ref: '#/components/schemas/ProviderType'
+          - type: 'null'
+          title: Selected Provider
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Repository'
+                title: Response Search Repositories Api User Search Repositories Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - User
+  /api/user/suggested-tasks:
+    get:
+      summary: Get Suggested Tasks
+      description: Get suggested tasks for the authenticated user across their most recently pushed repositories.
+      operationId: get_suggested_tasks_api_user_suggested_tasks_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/SuggestedTask'
+                type: array
+                title: Response Get Suggested Tasks Api User Suggested Tasks Get
+      security:
+      - APIKeyHeader: []
+      tags:
+      - User
+  /api/user/repository/branches:
+    get:
+      summary: Get Repository Branches
+      description: Get branches for a repository.
+      operationId: get_repository_branches_api_user_repository_branches_get
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: repository
+        in: query
+        required: true
+        schema:
+          type: string
+          title: Repository
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Branch'
+                title: Response Get Repository Branches Api User Repository Branches Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - User
+  /api/user/repository/{repository_name}/microagents:
+    get:
+      summary: Get Repository Microagents
+      description: 'Scan the microagents directory of a repository and return the list of microagents.
+
+
+        The microagents directory location depends on the git provider and actual repository name:
+
+        - If git provider is not GitLab and actual repository name is ".openhands": scans "microagents" folder
+
+        - If git provider is GitLab and actual repository name is "openhands-config": scans "microagents" folder
+
+        - Otherwise: scans ".openhands/microagents" folder'
+      operationId: get_repository_microagents_api_user_repository__repository_name__microagents_get
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: repository_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Repository Name
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MicroagentResponse'
+                title: Response Get Repository Microagents Api User Repository  Repository Name  Microagents Get
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - User
+  /api/user/repository/{repository_name}/microagents/content:
+    get:
+      summary: Get Repository Microagent Content
+      description: Fetch the content of a specific microagent file from a repository.
+      operationId: get_repository_microagent_content_api_user_repository__repository_name__microagents_content_get
+      security:
+      - APIKeyHeader: []
+      parameters:
+      - name: repository_name
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Repository Name
+      - name: file_path
+        in: query
+        required: true
+        schema:
+          type: string
+          description: Path to the microagent file within the repository
+          title: File Path
+        description: Path to the microagent file within the repository
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MicroagentContentResponse'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - User
+components:
+  schemas:
+    Repository:
+      properties:
+        id:
+          type: string
+          title: Id
+        full_name:
+          type: string
+          title: Full Name
+        git_provider:
+          $ref: '#/components/schemas/ProviderType'
+        is_public:
+          type: boolean
+          title: Is Public
+        stargazers_count:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Stargazers Count
+        link_header:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Link Header
+        pushed_at:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Pushed At
+        owner_type:
+          anyOf:
+          - $ref: '#/components/schemas/OwnerType'
+          - type: 'null'
+        main_branch:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Main Branch
+      type: object
+      required:
+      - id
+      - full_name
+      - git_provider
+      - is_public
+      title: Repository
+    TaskType:
+      type: string
+      enum:
+      - MERGE_CONFLICTS
+      - FAILING_CHECKS
+      - UNRESOLVED_COMMENTS
+      - OPEN_ISSUE
+      - OPEN_PR
+      - CREATE_MICROAGENT
+      title: TaskType
+    SuggestedTask:
+      properties:
+        git_provider:
+          $ref: '#/components/schemas/ProviderType'
+        task_type:
+          $ref: '#/components/schemas/TaskType'
+        repo:
+          type: string
+          title: Repo
+        issue_number:
+          type: integer
+          title: Issue Number
+        title:
+          type: string
+          title: Title
+      type: object
+      required:
+      - git_provider
+      - task_type
+      - repo
+      - issue_number
+      - title
+      title: SuggestedTask
+    OwnerType:
+      type: string
+      enum:
+      - user
+      - organization
+      title: OwnerType
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    MicroagentResponse:
+      properties:
+        name:
+          type: string
+          title: Name
+        path:
+          type: string
+          title: Path
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+      type: object
+      required:
+      - name
+      - path
+      - created_at
+      title: MicroagentResponse
+      description: 'Response model for microagents endpoint.
+
+
+        Note: This model only includes basic metadata that can be determined
+
+        without parsing microagent content. Use the separate content API
+
+        to get detailed microagent information.'
+    ProviderType:
+      type: string
+      enum:
+      - github
+      - gitlab
+      - bitbucket
+      - enterprise_sso
+      title: ProviderType
+    MicroagentContentResponse:
+      properties:
+        content:
+          type: string
+          title: Content
+        path:
+          type: string
+          title: Path
+        triggers:
+          items:
+            type: string
+          type: array
+          title: Triggers
+          default: []
+        git_provider:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Git Provider
+      type: object
+      required:
+      - content
+      - path
+      title: MicroagentContentResponse
+      description: Response model for individual microagent content endpoint.
+    Branch:
+      properties:
+        name:
+          type: string
+          title: Name
+        commit_sha:
+          type: string
+          title: Commit Sha
+        protected:
+          type: boolean
+          title: Protected
+        last_push_date:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Last Push Date
+      type: object
+      required:
+      - name
+      - commit_sha
+      - protected
+      title: Branch
+    User:
+      properties:
+        id:
+          type: string
+          title: Id
+        login:
+          type: string
+          title: Login
+        avatar_url:
+          type: string
+          title: Avatar Url
+        company:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Company
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
+      type: object
+      required:
+      - id
+      - login
+      - avatar_url
+      title: User
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Session-API-Key

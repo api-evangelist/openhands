@@ -1,0 +1,94 @@
+openapi: 3.1.0
+info:
+  title: OpenHands Add Git Providers Options API
+  description: 'OpenHands: Code Less, Make More'
+  version: 0.53.0
+servers:
+- url: https://app.all-hands.dev
+  description: Production server
+- url: http://localhost:3000
+  description: Local development server
+tags:
+- name: Options
+paths:
+  /api/options/models:
+    get:
+      summary: List Supported Models
+      description: List model identifiers available on this server based on configured providers.
+      operationId: get_litellm_models_api_options_models_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+                title: Response Get Litellm Models Api Options Models Get
+      security:
+      - APIKeyHeader: []
+      tags:
+      - Options
+  /api/options/agents:
+    get:
+      summary: List Agents
+      description: List available agent types supported by this server.
+      operationId: get_agents_api_options_agents_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+                title: Response Get Agents Api Options Agents Get
+      security:
+      - APIKeyHeader: []
+      tags:
+      - Options
+  /api/options/security-analyzers:
+    get:
+      summary: List Security Analyzers
+      description: List supported security analyzers.
+      operationId: get_security_analyzers_api_options_security_analyzers_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+                title: Response Get Security Analyzers Api Options Security Analyzers Get
+      security:
+      - APIKeyHeader: []
+      tags:
+      - Options
+  /api/options/config:
+    get:
+      summary: Get Config
+      description: Get current config.
+      operationId: get_config_api_options_config_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
+                title: Response Get Config Api Options Config Get
+      security:
+      - APIKeyHeader: []
+      tags:
+      - Options
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Session-API-Key

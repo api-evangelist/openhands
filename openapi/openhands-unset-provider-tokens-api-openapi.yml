@@ -1,0 +1,37 @@
+openapi: 3.1.0
+info:
+  title: OpenHands Add Git Providers Unset Provider Tokens API
+  description: 'OpenHands: Code Less, Make More'
+  version: 0.53.0
+servers:
+- url: https://app.all-hands.dev
+  description: Production server
+- url: http://localhost:3000
+  description: Local development server
+tags:
+- name: Unset Provider Tokens
+paths:
+  /api/unset-provider-tokens:
+    post:
+      summary: Unset Provider Tokens
+      operationId: unset_provider_tokens_api_unset_provider_tokens_post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties:
+                  type: string
+                type: object
+                title: Response Unset Provider Tokens Api Unset Provider Tokens Post
+      security:
+      - APIKeyHeader: []
+      tags:
+      - Unset Provider Tokens
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Session-API-Key

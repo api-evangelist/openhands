@@ -1,0 +1,33 @@
+openapi: 3.1.0
+info:
+  title: OpenHands Add Git Providers Health API
+  description: 'OpenHands: Code Less, Make More'
+  version: 0.53.0
+servers:
+- url: https://app.all-hands.dev
+  description: Production server
+- url: http://localhost:3000
+  description: Local development server
+tags:
+- name: Health
+paths:
+  /health:
+    get:
+      summary: Health
+      operationId: health_health_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+                title: Response Health Health Get
+      tags:
+      - Health
+components:
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Session-API-Key
