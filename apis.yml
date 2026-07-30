@@ -1,6 +1,19 @@
 aid: openhands
 name: OpenHands
 description: OpenHands (by All Hands AI, formerly OpenDevin) is an open-source autonomous coding agent platform. Ships as a Python Agent SDK, CLI, local GUI with a REST API, Docker images, and a hosted cloud at app.all-hands.dev plus a self-hosted Kubernetes Enterprise tier. Core code is MIT licensed at github.com/OpenHands/OpenHands with 75K+ stars.
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.openhands.dev/og-image.png
 tags:
   - AI
@@ -17,53 +30,141 @@ position: Consuming
 kind: contract
 access: Open-Source
 apis:
-  - aid: openhands:agent-sdk
-    name: OpenHands Agent SDK
-    description: Composable Python SDK for defining, running, and orchestrating agents locally or scaled to thousands in the cloud. Source at github.com/All-Hands-AI/agent-sdk.
-    tags:
-      - SDK
-      - Python
-      - Agents
-    properties:
-      - url: https://docs.openhands.dev/sdk
-        type: Documentation
-      - url: https://github.com/All-Hands-AI/agent-sdk
-        type: SourceCode
-  - aid: openhands:cli
-    name: OpenHands CLI
-    description: Command-line interface for running OpenHands agents with Claude, GPT, or any other LLM. Source at github.com/OpenHands/OpenHands-CLI.
-    tags:
-      - CLI
-      - Agents
-    properties:
-      - url: https://docs.openhands.dev/usage/getting-started
-        type: Documentation
-      - url: https://github.com/OpenHands/OpenHands-CLI
-        type: SourceCode
-  - aid: openhands:local-gui-rest
-    name: OpenHands Local GUI REST API
-    description: Local React application with a REST API behind it for driving agents from the desktop. Shipped via Docker and the main OpenHands repo.
-    tags:
-      - REST
-      - GUI
-      - Local
-    properties:
-      - url: https://docs.openhands.dev/
-        type: Documentation
-      - url: https://github.com/OpenHands/OpenHands
-        type: SourceCode
-  - aid: openhands:cloud
-    name: OpenHands Cloud
-    description: Hosted OpenHands platform at app.all-hands.dev with a free tier (Minimax model), GitHub/GitLab/Bitbucket integrations, and Slack/Jira/Linear connectors.
-    tags:
-      - Cloud
-      - SaaS
-      - Hosted
-    properties:
-      - url: https://app.all-hands.dev
-        type: Portal
-      - url: https://docs.openhands.dev/
-        type: Documentation
+- aid: openhands:agent-sdk
+  name: OpenHands Agent SDK
+  description: >-
+    Composable Python SDK for defining, running, and orchestrating agents locally or scaled to thousands
+    in the cloud. Source at github.com/All-Hands-AI/agent-sdk.
+  tags:
+  - SDK
+  - Python
+  - Agents
+  properties:
+  - url: https://docs.openhands.dev/sdk
+    type: Documentation
+  - url: https://github.com/All-Hands-AI/agent-sdk
+    type: SourceCode
+- aid: openhands:cli
+  name: OpenHands CLI
+  description: >-
+    Command-line interface for running OpenHands agents with Claude, GPT, or any other LLM. Source at
+    github.com/OpenHands/OpenHands-CLI.
+  tags:
+  - CLI
+  - Agents
+  properties:
+  - url: https://docs.openhands.dev/usage/getting-started
+    type: Documentation
+  - url: https://github.com/OpenHands/OpenHands-CLI
+    type: SourceCode
+- aid: openhands:local-gui-rest
+  name: OpenHands Local GUI REST API
+  description: >-
+    Local React application with a REST API behind it for driving agents from the desktop. Shipped via
+    Docker and the main OpenHands repo.
+  tags:
+  - REST
+  - GUI
+  - Local
+  properties:
+  - url: https://docs.openhands.dev/
+    type: Documentation
+  - url: https://github.com/OpenHands/OpenHands
+    type: SourceCode
+- aid: openhands:cloud
+  name: OpenHands Cloud
+  description: >-
+    Hosted OpenHands platform at app.all-hands.dev with a free tier (Minimax model), GitHub/GitLab/Bitbucket
+    integrations, and Slack/Jira/Linear connectors.
+  tags:
+  - Cloud
+  - SaaS
+  - Hosted
+  properties:
+  - url: https://app.all-hands.dev
+    type: Portal
+  - url: https://docs.openhands.dev/
+    type: Documentation
+- aid: openhands:openhands-add-git-providers-api
+  name: OpenHands Add Git Providers API
+  description: The Add Git Providers API from OpenHands — 1 operation(s) for add git providers.
+  tags:
+  - Add Git Providers
+  properties:
+  - type: OpenAPI
+    url: openapi/openhands-add-git-providers-api-openapi.yml
+- aid: openhands:openhands-alive-api
+  name: OpenHands Alive API
+  description: The Alive API from OpenHands — 1 operation(s) for alive.
+  tags:
+  - Alive
+  properties:
+  - type: OpenAPI
+    url: openapi/openhands-alive-api-openapi.yml
+- aid: openhands:openhands-conversations-api
+  name: OpenHands Conversations API
+  description: The Conversations API from OpenHands — 16 operation(s) for conversations.
+  tags:
+  - Conversations
+  properties:
+  - type: OpenAPI
+    url: openapi/openhands-conversations-api-openapi.yml
+- aid: openhands:openhands-health-api
+  name: OpenHands Health API
+  description: The Health API from OpenHands — 1 operation(s) for health.
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/openhands-health-api-openapi.yml
+- aid: openhands:openhands-options-api
+  name: OpenHands Options API
+  description: The Options API from OpenHands — 4 operation(s) for options.
+  tags:
+  - Options
+  properties:
+  - type: OpenAPI
+    url: openapi/openhands-options-api-openapi.yml
+- aid: openhands:openhands-reset-settings-api
+  name: OpenHands Reset Settings API
+  description: The Reset Settings API from OpenHands — 1 operation(s) for reset settings.
+  tags:
+  - Reset Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/openhands-reset-settings-api-openapi.yml
+- aid: openhands:openhands-secrets-api
+  name: OpenHands Secrets API
+  description: The Secrets API from OpenHands — 2 operation(s) for secrets.
+  tags:
+  - Secrets
+  properties:
+  - type: OpenAPI
+    url: openapi/openhands-secrets-api-openapi.yml
+- aid: openhands:openhands-settings-api
+  name: OpenHands Settings API
+  description: The Settings API from OpenHands — 1 operation(s) for settings.
+  tags:
+  - Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/openhands-settings-api-openapi.yml
+- aid: openhands:openhands-unset-provider-tokens-api
+  name: OpenHands Unset Provider Tokens API
+  description: The Unset Provider Tokens API from OpenHands — 1 operation(s) for unset provider tokens.
+  tags:
+  - Unset Provider Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/openhands-unset-provider-tokens-api-openapi.yml
+- aid: openhands:openhands-user-api
+  name: OpenHands User API
+  description: The User API from OpenHands — 8 operation(s) for user.
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/openhands-user-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/openhands-agentic-access.yml
