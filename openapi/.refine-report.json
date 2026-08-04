@@ -1,0 +1,32 @@
+{
+  "provider": "openhands",
+  "sources": [
+    "openhands-add-git-providers-api-openapi.yml",
+    "openhands-alive-api-openapi.yml",
+    "openhands-conversations-api-openapi.yml",
+    "openhands-health-api-openapi.yml",
+    "openhands-options-api-openapi.yml",
+    "openhands-reset-settings-api-openapi.yml",
+    "openhands-secrets-api-openapi.yml",
+    "openhands-settings-api-openapi.yml",
+    "openhands-unset-provider-tokens-api-openapi.yml",
+    "openhands-user-api-openapi.yml"
+  ],
+  "outputs": [
+    "openhands-add-git-providers-api-openapi.yml",
+    "openhands-alive-api-openapi.yml",
+    "openhands-conversations-api-openapi.yml",
+    "openhands-health-api-openapi.yml",
+    "openhands-options-api-openapi.yml",
+    "openhands-reset-settings-api-openapi.yml",
+    "openhands-secrets-api-openapi.yml",
+    "openhands-settings-api-openapi.yml",
+    "openhands-unset-provider-tokens-api-openapi.yml",
+    "openhands-user-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
