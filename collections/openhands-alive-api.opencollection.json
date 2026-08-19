@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenHands Add Git Providers Alive API",
+    "version": "0.53.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Alive",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Alive",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/alive"
+          },
+          "docs": "Alive"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

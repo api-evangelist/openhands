@@ -1,0 +1,198 @@
+{
+  "item": [
+    {
+      "id": "f6ff01b9-bc18-44c0-a1a0-563625d33a00",
+      "name": "Add Git Providers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d9a93564-8c43-47b5-be96-a1b5feb0a1cd",
+          "name": "Store Provider Tokens",
+          "request": {
+            "name": "Store Provider Tokens",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "add-git-providers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Session-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mcp_config\": {\n    \"sse_servers\": [\n      {\n        \"url\": \"<string>\",\n        \"api_key\": \"<string>\"\n      },\n      {\n        \"url\": \"<string>\",\n        \"api_key\": \"<string>\"\n      }\n    ],\n    \"stdio_servers\": [\n      {\n        \"name\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"env\": {\n          \"key_0\": \"<string>\"\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"env\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\",\n          \"key_2\": \"<string>\"\n        }\n      }\n    ],\n    \"shttp_servers\": [\n      {\n        \"url\": \"<string>\",\n        \"api_key\": \"<string>\"\n      },\n      {\n        \"url\": \"<string>\",\n        \"api_key\": \"<string>\"\n      }\n    ]\n  },\n  \"provider_tokens\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e943daf6-90cb-4a0e-98a1-681aa9aa7e1f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "add-git-providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Session-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mcp_config\": {\n    \"sse_servers\": [\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      },\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      }\n    ],\n    \"stdio_servers\": [\n      {\n        \"name\": \"string\",\n        \"command\": \"string\",\n        \"args\": [\n          \"string\",\n          \"string\"\n        ],\n        \"env\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"command\": \"string\",\n        \"args\": [\n          \"string\",\n          \"string\"\n        ],\n        \"env\": {\n          \"key_0\": \"string\"\n        }\n      }\n    ],\n    \"shttp_servers\": [\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      },\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      }\n    ]\n  },\n  \"provider_tokens\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94020edf-ed83-4386-8472-320ea5c01a52",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "add-git-providers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Session-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mcp_config\": {\n    \"sse_servers\": [\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      },\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      }\n    ],\n    \"stdio_servers\": [\n      {\n        \"name\": \"string\",\n        \"command\": \"string\",\n        \"args\": [\n          \"string\",\n          \"string\"\n        ],\n        \"env\": {\n          \"key_0\": \"string\"\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"command\": \"string\",\n        \"args\": [\n          \"string\",\n          \"string\"\n        ],\n        \"env\": {\n          \"key_0\": \"string\"\n        }\n      }\n    ],\n    \"shttp_servers\": [\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      },\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      }\n    ]\n  },\n  \"provider_tokens\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.all-hands.dev",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7f997b62-a98f-42c5-b06a-74a93ae79259",
+    "name": "OpenHands Add Git Providers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenHands: Code Less, Make More",
+      "type": "text/plain"
+    }
+  }
+}

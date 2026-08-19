@@ -1,0 +1,431 @@
+{
+  "item": [
+    {
+      "id": "d056e151-e1cf-468f-827b-27ee221c7f72",
+      "name": "Settings",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1a2ddc04-8ad7-422c-a335-7c2e5963dcc3",
+          "name": "Load Settings",
+          "request": {
+            "name": "Load Settings",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Session-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6bd1c516-fdfb-4178-8d81-0dad1ff82178",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Session-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"llm_api_key_set\": false,\n  \"language\": \"string\",\n  \"agent\": \"string\",\n  \"max_iterations\": 8220,\n  \"security_analyzer\": \"string\",\n  \"confirmation_mode\": true,\n  \"llm_model\": \"string\",\n  \"llm_api_key\": \"string\",\n  \"llm_base_url\": \"string\",\n  \"remote_runtime_resource_factor\": 521,\n  \"secrets_store\": {\n    \"provider_tokens\": {\n      \"key_0\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"key_1\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      }\n    },\n    \"custom_secrets\": {\n      \"key_0\": \"string\"\n    }\n  },\n  \"enable_default_condenser\": true,\n  \"enable_sound_notifications\": false,\n  \"enable_proactive_conversation_starters\": true,\n  \"enable_solvability_analysis\": true,\n  \"user_consents_to_analytics\": false,\n  \"sandbox_base_container_image\": \"string\",\n  \"sandbox_runtime_container_image\": \"string\",\n  \"mcp_config\": {\n    \"sse_servers\": [\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      },\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      }\n    ],\n    \"stdio_servers\": [\n      {\n        \"name\": \"string\",\n        \"command\": \"string\",\n        \"args\": [\n          \"string\",\n          \"string\"\n        ],\n        \"env\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"command\": \"string\",\n        \"args\": [\n          \"string\",\n          \"string\"\n        ],\n        \"env\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    ],\n    \"shttp_servers\": [\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      },\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      }\n    ]\n  },\n  \"search_api_key\": \"string\",\n  \"sandbox_api_key\": \"string\",\n  \"max_budget_per_task\": 6856.851099292165,\n  \"email\": \"string\",\n  \"email_verified\": false,\n  \"git_user_name\": \"string\",\n  \"git_user_email\": \"string\",\n  \"provider_tokens_set\": {\n    \"key_0\": \"string\"\n  },\n  \"search_api_key_set\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8dace519-46b1-4129-b0c8-0f1cd41c2c3a",
+              "name": "Invalid token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Session-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": false,\n  \"key_1\": 7812\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df9b61a7-c799-478b-a032-0a02dee7ada8",
+              "name": "Settings not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Session-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 7044.452958993137,\n  \"key_1\": 6913\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c61850c9-08eb-4f21-a096-f01d532c9ac9",
+          "name": "Store Settings",
+          "request": {
+            "name": "Store Settings",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Session-API-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"language\": \"<string>\",\n  \"agent\": \"<string>\",\n  \"max_iterations\": \"<integer>\",\n  \"security_analyzer\": \"<string>\",\n  \"confirmation_mode\": \"<boolean>\",\n  \"llm_model\": \"<string>\",\n  \"llm_api_key\": \"<password>\",\n  \"llm_base_url\": \"<string>\",\n  \"remote_runtime_resource_factor\": \"<integer>\",\n  \"secrets_store\": {\n    \"provider_tokens\": {\n      \"key_0\": \"<string>\"\n    },\n    \"custom_secrets\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\",\n      \"key_3\": \"<string>\"\n    }\n  },\n  \"enable_default_condenser\": true,\n  \"enable_sound_notifications\": false,\n  \"enable_proactive_conversation_starters\": true,\n  \"enable_solvability_analysis\": true,\n  \"user_consents_to_analytics\": \"<boolean>\",\n  \"sandbox_base_container_image\": \"<string>\",\n  \"sandbox_runtime_container_image\": \"<string>\",\n  \"mcp_config\": {\n    \"sse_servers\": [\n      {\n        \"url\": \"<string>\",\n        \"api_key\": \"<string>\"\n      },\n      {\n        \"url\": \"<string>\",\n        \"api_key\": \"<string>\"\n      }\n    ],\n    \"stdio_servers\": [\n      {\n        \"name\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"env\": {\n          \"key_0\": \"<string>\"\n        }\n      },\n      {\n        \"name\": \"<string>\",\n        \"command\": \"<string>\",\n        \"args\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"env\": {\n          \"key_0\": \"<string>\",\n          \"key_1\": \"<string>\"\n        }\n      }\n    ],\n    \"shttp_servers\": [\n      {\n        \"url\": \"<string>\",\n        \"api_key\": \"<string>\"\n      },\n      {\n        \"url\": \"<string>\",\n        \"api_key\": \"<string>\"\n      }\n    ]\n  },\n  \"search_api_key\": \"<password>\",\n  \"sandbox_api_key\": \"<password>\",\n  \"max_budget_per_task\": \"<number>\",\n  \"email\": \"<string>\",\n  \"email_verified\": \"<boolean>\",\n  \"git_user_name\": \"<string>\",\n  \"git_user_email\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00cbdcbe-9b27-43af-8620-9704f7bd27b3",
+              "name": "Settings stored successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Session-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"language\": \"<string>\",\n  \"agent\": \"<string>\",\n  \"max_iterations\": \"<integer>\",\n  \"security_analyzer\": \"<string>\",\n  \"confirmation_mode\": \"<boolean>\",\n  \"llm_model\": \"<string>\",\n  \"llm_api_key\": \"<password>\",\n  \"llm_base_url\": \"<string>\",\n  \"remote_runtime_resource_factor\": \"<integer>\",\n  \"secrets_store\": {\n    \"provider_tokens\": {\n      \"key_0\": \"string\"\n    },\n    \"custom_secrets\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  },\n  \"enable_default_condenser\": true,\n  \"enable_sound_notifications\": false,\n  \"enable_proactive_conversation_starters\": true,\n  \"enable_solvability_analysis\": true,\n  \"user_consents_to_analytics\": \"<boolean>\",\n  \"sandbox_base_container_image\": \"<string>\",\n  \"sandbox_runtime_container_image\": \"<string>\",\n  \"mcp_config\": {\n    \"sse_servers\": [\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      },\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      }\n    ],\n    \"stdio_servers\": [\n      {\n        \"name\": \"string\",\n        \"command\": \"string\",\n        \"args\": [\n          \"string\",\n          \"string\"\n        ],\n        \"env\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"command\": \"string\",\n        \"args\": [\n          \"string\",\n          \"string\"\n        ],\n        \"env\": {\n          \"key_0\": \"string\"\n        }\n      }\n    ],\n    \"shttp_servers\": [\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      },\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      }\n    ]\n  },\n  \"search_api_key\": \"<password>\",\n  \"sandbox_api_key\": \"<password>\",\n  \"max_budget_per_task\": \"<number>\",\n  \"email\": \"<string>\",\n  \"email_verified\": \"<boolean>\",\n  \"git_user_name\": \"<string>\",\n  \"git_user_email\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": true,\n  \"key_1\": \"string\",\n  \"key_2\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5749296f-46ae-4664-8634-3a5773632b30",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Session-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"language\": \"<string>\",\n  \"agent\": \"<string>\",\n  \"max_iterations\": \"<integer>\",\n  \"security_analyzer\": \"<string>\",\n  \"confirmation_mode\": \"<boolean>\",\n  \"llm_model\": \"<string>\",\n  \"llm_api_key\": \"<password>\",\n  \"llm_base_url\": \"<string>\",\n  \"remote_runtime_resource_factor\": \"<integer>\",\n  \"secrets_store\": {\n    \"provider_tokens\": {\n      \"key_0\": \"string\"\n    },\n    \"custom_secrets\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  },\n  \"enable_default_condenser\": true,\n  \"enable_sound_notifications\": false,\n  \"enable_proactive_conversation_starters\": true,\n  \"enable_solvability_analysis\": true,\n  \"user_consents_to_analytics\": \"<boolean>\",\n  \"sandbox_base_container_image\": \"<string>\",\n  \"sandbox_runtime_container_image\": \"<string>\",\n  \"mcp_config\": {\n    \"sse_servers\": [\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      },\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      }\n    ],\n    \"stdio_servers\": [\n      {\n        \"name\": \"string\",\n        \"command\": \"string\",\n        \"args\": [\n          \"string\",\n          \"string\"\n        ],\n        \"env\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"command\": \"string\",\n        \"args\": [\n          \"string\",\n          \"string\"\n        ],\n        \"env\": {\n          \"key_0\": \"string\"\n        }\n      }\n    ],\n    \"shttp_servers\": [\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      },\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      }\n    ]\n  },\n  \"search_api_key\": \"<password>\",\n  \"sandbox_api_key\": \"<password>\",\n  \"max_budget_per_task\": \"<number>\",\n  \"email\": \"<string>\",\n  \"email_verified\": \"<boolean>\",\n  \"git_user_name\": \"<string>\",\n  \"git_user_email\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfa8c7f4-dc22-4d55-8084-27c790d9dab6",
+              "name": "Error storing settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Session-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"language\": \"<string>\",\n  \"agent\": \"<string>\",\n  \"max_iterations\": \"<integer>\",\n  \"security_analyzer\": \"<string>\",\n  \"confirmation_mode\": \"<boolean>\",\n  \"llm_model\": \"<string>\",\n  \"llm_api_key\": \"<password>\",\n  \"llm_base_url\": \"<string>\",\n  \"remote_runtime_resource_factor\": \"<integer>\",\n  \"secrets_store\": {\n    \"provider_tokens\": {\n      \"key_0\": \"string\"\n    },\n    \"custom_secrets\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  },\n  \"enable_default_condenser\": true,\n  \"enable_sound_notifications\": false,\n  \"enable_proactive_conversation_starters\": true,\n  \"enable_solvability_analysis\": true,\n  \"user_consents_to_analytics\": \"<boolean>\",\n  \"sandbox_base_container_image\": \"<string>\",\n  \"sandbox_runtime_container_image\": \"<string>\",\n  \"mcp_config\": {\n    \"sse_servers\": [\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      },\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      }\n    ],\n    \"stdio_servers\": [\n      {\n        \"name\": \"string\",\n        \"command\": \"string\",\n        \"args\": [\n          \"string\",\n          \"string\"\n        ],\n        \"env\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        }\n      },\n      {\n        \"name\": \"string\",\n        \"command\": \"string\",\n        \"args\": [\n          \"string\",\n          \"string\"\n        ],\n        \"env\": {\n          \"key_0\": \"string\"\n        }\n      }\n    ],\n    \"shttp_servers\": [\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      },\n      {\n        \"url\": \"string\",\n        \"api_key\": \"string\"\n      }\n    ]\n  },\n  \"search_api_key\": \"<password>\",\n  \"sandbox_api_key\": \"<password>\",\n  \"max_budget_per_task\": \"<number>\",\n  \"email\": \"<string>\",\n  \"email_verified\": \"<boolean>\",\n  \"git_user_name\": \"<string>\",\n  \"git_user_email\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 8545.129069404262\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.all-hands.dev",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f5d1ac75-0636-4d95-9ec2-766c9c527b67",
+    "name": "OpenHands Add Git Providers Settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenHands: Code Less, Make More",
+      "type": "text/plain"
+    }
+  }
+}

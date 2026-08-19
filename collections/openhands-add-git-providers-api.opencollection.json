@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenHands Add Git Providers API",
+    "version": "0.53.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Add Git Providers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Store Provider Tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.all-hands.dev/api/add-git-providers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Store Provider Tokens"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

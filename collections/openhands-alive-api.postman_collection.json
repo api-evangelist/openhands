@@ -1,0 +1,99 @@
+{
+  "item": [
+    {
+      "id": "cb665aac-ab65-41f7-a180-513286c00d4b",
+      "name": "Alive",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "69a97d31-1084-4c1e-a158-80f6b4db6459",
+          "name": "Alive",
+          "request": {
+            "name": "Alive",
+            "description": {},
+            "url": {
+              "path": [
+                "alive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e823e6e-eec6-4f0d-925e-d3cc307c9d54",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.all-hands.dev",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0c34d7f6-b18f-4ba1-a656-414f6632d039",
+    "name": "OpenHands Add Git Providers Alive API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "OpenHands: Code Less, Make More",
+      "type": "text/plain"
+    }
+  }
+}

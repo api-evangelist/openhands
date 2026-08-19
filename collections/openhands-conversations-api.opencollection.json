@@ -1,0 +1,566 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenHands Add Git Providers Conversations API",
+    "version": "0.53.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Conversations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Workspace Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/list-files",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List workspace files visible to the conversation runtime. Applies .gitignore and internal ignore rules."
+        },
+        {
+          "info": {
+            "name": "Get File Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/select-file",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "file",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return the content of the given file from the conversation workspace."
+        },
+        {
+          "info": {
+            "name": "Download Workspace Archive",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/zip-directory",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Return a ZIP archive of the current conversation workspace."
+        },
+        {
+          "info": {
+            "name": "Git Changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/git/changes",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Git Changes"
+        },
+        {
+          "info": {
+            "name": "Git Diff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/git/diff",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "path",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Git Diff"
+        },
+        {
+          "info": {
+            "name": "Upload Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/upload-files",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Upload Files"
+        },
+        {
+          "info": {
+            "name": "Submit Feedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/submit-feedback",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Submit user feedback.\n\nThis function stores the provided feedback data.\n\nTo submit feedback:"
+        },
+        {
+          "info": {
+            "name": "Get Remote Runtime Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/config",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Retrieve the runtime configuration.\n\nCurrently, this is the session ID and runtime ID (if available)."
+        },
+        {
+          "info": {
+            "name": "Search Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/events",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reverse",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search through the event stream with filtering and pagination."
+        },
+        {
+          "info": {
+            "name": "Add Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/events",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Add Event"
+        },
+        {
+          "info": {
+            "name": "Get Microagents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/microagents",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all microagents associated with the conversation.\n\nThis endpoint returns all repository and knowledge microagents that are loaded for the conversation."
+        },
+        {
+          "info": {
+            "name": "Search Conversations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/conversations",
+            "params": [
+              {
+                "name": "page_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "selected_repository",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "conversation_trigger",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search Conversations"
+        },
+        {
+          "info": {
+            "name": "New Conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.all-hands.dev/api/conversations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Initialize a new session or join an existing one.\n\nAfter successful initialization, the client should connect to the WebSocket\nusing the returned conversation ID."
+        },
+        {
+          "info": {
+            "name": "Get Conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Conversation"
+        },
+        {
+          "info": {
+            "name": "Update Conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update conversation metadata.\n\nThis endpoint allows updating conversation details like title.\nOnly the conversation owner can update the conversation."
+        },
+        {
+          "info": {
+            "name": "Delete Conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Conversation"
+        },
+        {
+          "info": {
+            "name": "Get Prompt",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/remember-prompt",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Prompt"
+        },
+        {
+          "info": {
+            "name": "Start Conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/start",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Start an agent loop for a conversation.\n\nThis endpoint calls the conversation_manager's maybe_start_agent_loop method\nto start a conversation. If the conversation is already running, it will\nreturn the existing agent loop info."
+        },
+        {
+          "info": {
+            "name": "Stop Conversation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/stop",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Stop an agent loop for a conversation.\n\nThis endpoint calls the conversation_manager's close_session method\nto stop a conversation."
+        },
+        {
+          "info": {
+            "name": "Get Trajectory",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/conversations/:conversation_id/trajectory",
+            "params": [
+              {
+                "name": "conversation_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get trajectory.\n\nThis function retrieves the current trajectory and returns it."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

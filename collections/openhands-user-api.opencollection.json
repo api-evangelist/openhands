@@ -1,0 +1,242 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenHands Add Git Providers User API",
+    "version": "0.53.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get User Installations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/user/installations",
+            "params": [
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get User Installations"
+        },
+        {
+          "info": {
+            "name": "Get User Repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/user/repositories",
+            "params": [
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "selected_provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "installation_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get User Repositories"
+        },
+        {
+          "info": {
+            "name": "Get User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/user/info",
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get User"
+        },
+        {
+          "info": {
+            "name": "Search Repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/user/search/repositories",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "selected_provider",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search Repositories"
+        },
+        {
+          "info": {
+            "name": "Get Suggested Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/user/suggested-tasks",
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get suggested tasks for the authenticated user across their most recently pushed repositories."
+        },
+        {
+          "info": {
+            "name": "Get Repository Branches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/user/repository/branches",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get branches for a repository."
+        },
+        {
+          "info": {
+            "name": "Get Repository Microagents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/user/repository/:repository_name/microagents",
+            "params": [
+              {
+                "name": "repository_name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Scan the microagents directory of a repository and return the list of microagents.\n\nThe microagents directory location depends on the git provider and actual repository name:\n- If git provider is not GitLab and actual repository name is \".openhands\": scans \"microagents\" folder\n- If git provider is GitLab and actual repository name is \"openhands-config\": scans \"microagents\" folder\n- Otherwise: scans \".openhands/microagents\" folder"
+        },
+        {
+          "info": {
+            "name": "Get Repository Microagent Content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.all-hands.dev/api/user/repository/:repository_name/microagents/content",
+            "params": [
+              {
+                "name": "repository_name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "file_path",
+                "value": "",
+                "type": "query",
+                "description": "Path to the microagent file within the repository"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Fetch the content of a specific microagent file from a repository."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OpenHands Add Git Providers Unset Provider Tokens API",
+    "version": "0.53.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Unset Provider Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Unset Provider Tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.all-hands.dev/api/unset-provider-tokens",
+            "auth": {
+              "type": "apikey",
+              "key": "X-Session-API-Key",
+              "value": "{{X-Session-API-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Unset Provider Tokens"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
