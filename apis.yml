@@ -16,6 +16,14 @@ accessModel:
   method: derived
 image: https://www.openhands.dev/og-image.png
 tags:
+  - Artificial Intelligence
+  - Agents
+  - Autonomous
+  - Open-Source
+  - Developer Tools
+  - Software Engineering
+  - Code Generation
+tags_raw:
   - AI
   - Agents
   - Autonomous
@@ -77,6 +85,10 @@ apis:
     Hosted OpenHands platform at app.all-hands.dev with a free tier (Minimax model), GitHub/GitLab/Bitbucket
     integrations, and Slack/Jira/Linear connectors.
   tags:
+  - Cloud
+  - Software-as-a-Service
+  - Hosted
+  tags_raw:
   - Cloud
   - SaaS
   - Hosted
