@@ -1,6 +1,19 @@
 aid: openhands
 name: OpenHands
 description: OpenHands (by All Hands AI, formerly OpenDevin) is an open-source autonomous coding agent platform. Ships as a Python Agent SDK, CLI, local GUI with a REST API, Docker images, and a hosted cloud at app.all-hands.dev plus a self-hosted Kubernetes Enterprise tier. Core code is MIT licensed at github.com/OpenHands/OpenHands with 75K+ stars.
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: self-serve
