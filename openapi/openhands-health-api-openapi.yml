@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: OpenHands Add Git Providers Health API
+  title: OpenHands Health API
   description: 'OpenHands: Code Less, Make More'
   version: 0.53.0
 servers:
