@@ -39,85 +39,6 @@ paths:
       - Add Git Providers
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ProviderToken:
-      properties:
-        token:
-          anyOf:
-          - type: string
-            format: password
-            writeOnly: true
-          - type: 'null'
-          title: Token
-        user_id:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: User Id
-        host:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Host
-      type: object
-      title: ProviderToken
-    MCPStdioServerConfig:
-      properties:
-        name:
-          type: string
-          title: Name
-        command:
-          type: string
-          title: Command
-        args:
-          items:
-            type: string
-          type: array
-          title: Args
-        env:
-          additionalProperties:
-            type: string
-          type: object
-          title: Env
-      type: object
-      required:
-      - name
-      - command
-      title: MCPStdioServerConfig
-      description: "Configuration for a MCP server that uses stdio.\n\nAttributes:\n    name: The name of the server\n    command: The command to run the server\n    args: The arguments to pass to the server\n    env: The environment variables to set for the server"
-    ProviderType:
-      type: string
-      enum:
-      - github
-      - gitlab
-      - bitbucket
-      - enterprise_sso
-      title: ProviderType
-    POSTProviderModel:
-      properties:
-        mcp_config:
-          anyOf:
-          - $ref: '#/components/schemas/MCPConfig'
-          - type: 'null'
-        provider_tokens:
-          additionalProperties:
-            $ref: '#/components/schemas/ProviderToken'
-          propertyNames:
-            $ref: '#/components/schemas/ProviderType'
-          type: object
-          title: Provider Tokens
-          default: {}
-      type: object
-      title: POSTProviderModel
-      description: Settings for POST requests
     MCPSHTTPServerConfig:
       properties:
         url:
@@ -147,6 +68,38 @@ components:
       - url
       title: MCPSSEServerConfig
       description: "Configuration for a single MCP server.\n\nAttributes:\n    url: The server URL\n    api_key: Optional API key for authentication"
+    ProviderType:
+      type: string
+      enum:
+      - github
+      - gitlab
+      - bitbucket
+      - enterprise_sso
+      title: ProviderType
+    MCPStdioServerConfig:
+      properties:
+        name:
+          type: string
+          title: Name
+        command:
+          type: string
+          title: Command
+        args:
+          items:
+            type: string
+          type: array
+          title: Args
+        env:
+          additionalProperties:
+            type: string
+          type: object
+          title: Env
+      type: object
+      required:
+      - name
+      - command
+      title: MCPStdioServerConfig
+      description: "Configuration for a MCP server that uses stdio.\n\nAttributes:\n    name: The name of the server\n    command: The command to run the server\n    args: The arguments to pass to the server\n    env: The environment variables to set for the server"
     ValidationError:
       properties:
         loc:
@@ -189,6 +142,53 @@ components:
       type: object
       title: MCPConfig
       description: "Configuration for MCP (Message Control Protocol) settings.\n\nAttributes:\n    sse_servers: List of MCP SSE server configs\n    stdio_servers: List of MCP stdio server configs. These servers will be added to the MCP Router running inside runtime container.\n    shttp_servers: List of MCP HTTP server configs."
+    ProviderToken:
+      properties:
+        token:
+          anyOf:
+          - type: string
+            format: password
+            writeOnly: true
+          - type: 'null'
+          title: Token
+        user_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: User Id
+        host:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Host
+      type: object
+      title: ProviderToken
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    POSTProviderModel:
+      properties:
+        mcp_config:
+          anyOf:
+          - $ref: '#/components/schemas/MCPConfig'
+          - type: 'null'
+        provider_tokens:
+          additionalProperties:
+            $ref: '#/components/schemas/ProviderToken'
+          propertyNames:
+            $ref: '#/components/schemas/ProviderType'
+          type: object
+          title: Provider Tokens
+          default: {}
+      type: object
+      title: POSTProviderModel
+      description: Settings for POST requests
   securitySchemes:
     APIKeyHeader:
       type: apiKey

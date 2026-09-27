@@ -80,57 +80,20 @@ paths:
       - Settings
 components:
   schemas:
-    HTTPValidationError:
+    MCPSHTTPServerConfig:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    UserSecrets-Output:
-      properties:
-        provider_tokens:
-          additionalProperties:
-            additionalProperties:
-              anyOf:
-              - type: string
-              - {}
-            type: object
-          type: object
-          title: Provider Tokens
-        custom_secrets:
-          additionalProperties:
-            type: string
-          type: object
-          title: Custom Secrets
-      type: object
-      title: UserSecrets
-    MCPStdioServerConfig:
-      properties:
-        name:
+        url:
           type: string
-          title: Name
-        command:
-          type: string
-          title: Command
-        args:
-          items:
-            type: string
-          type: array
-          title: Args
-        env:
-          additionalProperties:
-            type: string
-          type: object
-          title: Env
+          title: Url
+        api_key:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Api Key
       type: object
       required:
-      - name
-      - command
-      title: MCPStdioServerConfig
-      description: "Configuration for a MCP server that uses stdio.\n\nAttributes:\n    name: The name of the server\n    command: The command to run the server\n    args: The arguments to pass to the server\n    env: The environment variables to set for the server"
+      - url
+      title: MCPSHTTPServerConfig
     ProviderType:
       type: string
       enum:
@@ -139,20 +102,6 @@ components:
       - bitbucket
       - enterprise_sso
       title: ProviderType
-    UserSecrets-Input:
-      properties:
-        provider_tokens:
-          additionalProperties:
-            type: string
-          type: object
-          title: Provider Tokens
-        custom_secrets:
-          additionalProperties:
-            type: string
-          type: object
-          title: Custom Secrets
-      type: object
-      title: UserSecrets
     Settings:
       properties:
         language:
@@ -281,35 +230,51 @@ components:
       type: object
       title: Settings
       description: Persisted settings for OpenHands sessions
-    MCPSHTTPServerConfig:
+    MCPStdioServerConfig:
       properties:
-        url:
+        name:
           type: string
-          title: Url
-        api_key:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Api Key
+          title: Name
+        command:
+          type: string
+          title: Command
+        args:
+          items:
+            type: string
+          type: array
+          title: Args
+        env:
+          additionalProperties:
+            type: string
+          type: object
+          title: Env
       type: object
       required:
-      - url
-      title: MCPSHTTPServerConfig
-    MCPSSEServerConfig:
+      - name
+      - command
+      title: MCPStdioServerConfig
+      description: "Configuration for a MCP server that uses stdio.\n\nAttributes:\n    name: The name of the server\n    command: The command to run the server\n    args: The arguments to pass to the server\n    env: The environment variables to set for the server"
+    ValidationError:
       properties:
-        url:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
           type: string
-          title: Url
-        api_key:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Api Key
+          title: Message
+        type:
+          type: string
+          title: Error Type
       type: object
       required:
-      - url
-      title: MCPSSEServerConfig
-      description: "Configuration for a single MCP server.\n\nAttributes:\n    url: The server URL\n    api_key: Optional API key for authentication"
+      - loc
+      - msg
+      - type
+      title: ValidationError
     GETSettingsModel:
       properties:
         language:
@@ -458,27 +423,6 @@ components:
       - llm_api_key_set
       title: GETSettingsModel
       description: Settings with additional token data for the frontend
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     MCPConfig:
       properties:
         sse_servers:
@@ -500,6 +444,62 @@ components:
       type: object
       title: MCPConfig
       description: "Configuration for MCP (Message Control Protocol) settings.\n\nAttributes:\n    sse_servers: List of MCP SSE server configs\n    stdio_servers: List of MCP stdio server configs. These servers will be added to the MCP Router running inside runtime container.\n    shttp_servers: List of MCP HTTP server configs."
+    UserSecrets-Output:
+      properties:
+        provider_tokens:
+          additionalProperties:
+            additionalProperties:
+              anyOf:
+              - type: string
+              - {}
+            type: object
+          type: object
+          title: Provider Tokens
+        custom_secrets:
+          additionalProperties:
+            type: string
+          type: object
+          title: Custom Secrets
+      type: object
+      title: UserSecrets
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    UserSecrets-Input:
+      properties:
+        provider_tokens:
+          additionalProperties:
+            type: string
+          type: object
+          title: Provider Tokens
+        custom_secrets:
+          additionalProperties:
+            type: string
+          type: object
+          title: Custom Secrets
+      type: object
+      title: UserSecrets
+    MCPSSEServerConfig:
+      properties:
+        url:
+          type: string
+          title: Url
+        api_key:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Api Key
+      type: object
+      required:
+      - url
+      title: MCPSSEServerConfig
+      description: "Configuration for a single MCP server.\n\nAttributes:\n    url: The server URL\n    api_key: Optional API key for authentication"
   securitySchemes:
     APIKeyHeader:
       type: apiKey
