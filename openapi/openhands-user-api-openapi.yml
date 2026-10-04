@@ -311,130 +311,6 @@ paths:
       - User
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    OwnerType:
-      type: string
-      enum:
-      - user
-      - organization
-      title: OwnerType
-    User:
-      properties:
-        id:
-          type: string
-          title: Id
-        login:
-          type: string
-          title: Login
-        avatar_url:
-          type: string
-          title: Avatar Url
-        company:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Company
-        name:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Name
-        email:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Email
-      type: object
-      required:
-      - id
-      - login
-      - avatar_url
-      title: User
-    ProviderType:
-      type: string
-      enum:
-      - github
-      - gitlab
-      - bitbucket
-      - enterprise_sso
-      title: ProviderType
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    SuggestedTask:
-      properties:
-        git_provider:
-          $ref: '#/components/schemas/ProviderType'
-        task_type:
-          $ref: '#/components/schemas/TaskType'
-        repo:
-          type: string
-          title: Repo
-        issue_number:
-          type: integer
-          title: Issue Number
-        title:
-          type: string
-          title: Title
-      type: object
-      required:
-      - git_provider
-      - task_type
-      - repo
-      - issue_number
-      - title
-      title: SuggestedTask
-    MicroagentContentResponse:
-      properties:
-        content:
-          type: string
-          title: Content
-        path:
-          type: string
-          title: Path
-        triggers:
-          items:
-            type: string
-          type: array
-          title: Triggers
-          default: []
-        git_provider:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Git Provider
-      type: object
-      required:
-      - content
-      - path
-      title: MicroagentContentResponse
-      description: Response model for individual microagent content endpoint.
     Repository:
       properties:
         id:
@@ -479,38 +355,12 @@ components:
       - git_provider
       - is_public
       title: Repository
-    TaskType:
+    OwnerType:
       type: string
       enum:
-      - MERGE_CONFLICTS
-      - FAILING_CHECKS
-      - UNRESOLVED_COMMENTS
-      - OPEN_ISSUE
-      - OPEN_PR
-      - CREATE_MICROAGENT
-      title: TaskType
-    Branch:
-      properties:
-        name:
-          type: string
-          title: Name
-        commit_sha:
-          type: string
-          title: Commit Sha
-        protected:
-          type: boolean
-          title: Protected
-        last_push_date:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Last Push Date
-      type: object
-      required:
-      - name
-      - commit_sha
-      - protected
-      title: Branch
+      - user
+      - organization
+      title: OwnerType
     MicroagentResponse:
       properties:
         name:
@@ -537,6 +387,156 @@ components:
         without parsing microagent content. Use the separate content API
 
         to get detailed microagent information.'
+    Branch:
+      properties:
+        name:
+          type: string
+          title: Name
+        commit_sha:
+          type: string
+          title: Commit Sha
+        protected:
+          type: boolean
+          title: Protected
+        last_push_date:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Last Push Date
+      type: object
+      required:
+      - name
+      - commit_sha
+      - protected
+      title: Branch
+    SuggestedTask:
+      properties:
+        git_provider:
+          $ref: '#/components/schemas/ProviderType'
+        task_type:
+          $ref: '#/components/schemas/TaskType'
+        repo:
+          type: string
+          title: Repo
+        issue_number:
+          type: integer
+          title: Issue Number
+        title:
+          type: string
+          title: Title
+      type: object
+      required:
+      - git_provider
+      - task_type
+      - repo
+      - issue_number
+      - title
+      title: SuggestedTask
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    TaskType:
+      type: string
+      enum:
+      - MERGE_CONFLICTS
+      - FAILING_CHECKS
+      - UNRESOLVED_COMMENTS
+      - OPEN_ISSUE
+      - OPEN_PR
+      - CREATE_MICROAGENT
+      title: TaskType
+    User:
+      properties:
+        id:
+          type: string
+          title: Id
+        login:
+          type: string
+          title: Login
+        avatar_url:
+          type: string
+          title: Avatar Url
+        company:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Company
+        name:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Name
+        email:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Email
+      type: object
+      required:
+      - id
+      - login
+      - avatar_url
+      title: User
+    ProviderType:
+      type: string
+      enum:
+      - github
+      - gitlab
+      - bitbucket
+      - enterprise_sso
+      title: ProviderType
+    MicroagentContentResponse:
+      properties:
+        content:
+          type: string
+          title: Content
+        path:
+          type: string
+          title: Path
+        triggers:
+          items:
+            type: string
+          type: array
+          title: Triggers
+          default: []
+        git_provider:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Git Provider
+      type: object
+      required:
+      - content
+      - path
+      title: MicroagentContentResponse
+      description: Response model for individual microagent content endpoint.
   securitySchemes:
     APIKeyHeader:
       type: apiKey
