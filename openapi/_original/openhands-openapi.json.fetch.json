@@ -1,0 +1,12 @@
+{
+ "url": "https://docs.openhands.dev/openapi.json",
+ "requested_url": "https://docs.openhands.dev/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 103817,
+ "sha256": "4daa2bb4dbf1ea1fe4ea21c3a597722c8e6ec522bed41c875dc864760f1058a3",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
