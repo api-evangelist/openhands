@@ -311,6 +311,51 @@ paths:
       - User
 components:
   schemas:
+    ProviderType:
+      type: string
+      enum:
+      - github
+      - gitlab
+      - bitbucket
+      - enterprise_sso
+      title: ProviderType
+    TaskType:
+      type: string
+      enum:
+      - MERGE_CONFLICTS
+      - FAILING_CHECKS
+      - UNRESOLVED_COMMENTS
+      - OPEN_ISSUE
+      - OPEN_PR
+      - CREATE_MICROAGENT
+      title: TaskType
+    OwnerType:
+      type: string
+      enum:
+      - user
+      - organization
+      title: OwnerType
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     Repository:
       properties:
         id:
@@ -355,12 +400,54 @@ components:
       - git_provider
       - is_public
       title: Repository
-    OwnerType:
-      type: string
-      enum:
-      - user
-      - organization
-      title: OwnerType
+    SuggestedTask:
+      properties:
+        git_provider:
+          $ref: '#/components/schemas/ProviderType'
+        task_type:
+          $ref: '#/components/schemas/TaskType'
+        repo:
+          type: string
+          title: Repo
+        issue_number:
+          type: integer
+          title: Issue Number
+        title:
+          type: string
+          title: Title
+      type: object
+      required:
+      - git_provider
+      - task_type
+      - repo
+      - issue_number
+      - title
+      title: SuggestedTask
+    MicroagentContentResponse:
+      properties:
+        content:
+          type: string
+          title: Content
+        path:
+          type: string
+          title: Path
+        triggers:
+          items:
+            type: string
+          type: array
+          title: Triggers
+          default: []
+        git_provider:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Git Provider
+      type: object
+      required:
+      - content
+      - path
+      title: MicroagentContentResponse
+      description: Response model for individual microagent content endpoint.
     MicroagentResponse:
       properties:
         name:
@@ -409,50 +496,6 @@ components:
       - commit_sha
       - protected
       title: Branch
-    SuggestedTask:
-      properties:
-        git_provider:
-          $ref: '#/components/schemas/ProviderType'
-        task_type:
-          $ref: '#/components/schemas/TaskType'
-        repo:
-          type: string
-          title: Repo
-        issue_number:
-          type: integer
-          title: Issue Number
-        title:
-          type: string
-          title: Title
-      type: object
-      required:
-      - git_provider
-      - task_type
-      - repo
-      - issue_number
-      - title
-      title: SuggestedTask
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     HTTPValidationError:
       properties:
         detail:
@@ -462,16 +505,6 @@ components:
           title: Detail
       type: object
       title: HTTPValidationError
-    TaskType:
-      type: string
-      enum:
-      - MERGE_CONFLICTS
-      - FAILING_CHECKS
-      - UNRESOLVED_COMMENTS
-      - OPEN_ISSUE
-      - OPEN_PR
-      - CREATE_MICROAGENT
-      title: TaskType
     User:
       properties:
         id:
@@ -504,39 +537,6 @@ components:
       - login
       - avatar_url
       title: User
-    ProviderType:
-      type: string
-      enum:
-      - github
-      - gitlab
-      - bitbucket
-      - enterprise_sso
-      title: ProviderType
-    MicroagentContentResponse:
-      properties:
-        content:
-          type: string
-          title: Content
-        path:
-          type: string
-          title: Path
-        triggers:
-          items:
-            type: string
-          type: array
-          title: Triggers
-          default: []
-        git_provider:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Git Provider
-      type: object
-      required:
-      - content
-      - path
-      title: MicroagentContentResponse
-      description: Response model for individual microagent content endpoint.
   securitySchemes:
     APIKeyHeader:
       type: apiKey

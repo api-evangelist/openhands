@@ -39,63 +39,14 @@ paths:
       - Add Git Providers
 components:
   schemas:
-    MCPConfig:
-      properties:
-        sse_servers:
-          items:
-            $ref: '#/components/schemas/MCPSSEServerConfig'
-          type: array
-          title: Sse Servers
-        stdio_servers:
-          items:
-            $ref: '#/components/schemas/MCPStdioServerConfig'
-          type: array
-          title: Stdio Servers
-        shttp_servers:
-          items:
-            $ref: '#/components/schemas/MCPSHTTPServerConfig'
-          type: array
-          title: Shttp Servers
-      additionalProperties: false
-      type: object
-      title: MCPConfig
-      description: "Configuration for MCP (Message Control Protocol) settings.\n\nAttributes:\n    sse_servers: List of MCP SSE server configs\n    stdio_servers: List of MCP stdio server configs. These servers will be added to the MCP Router running inside runtime container.\n    shttp_servers: List of MCP HTTP server configs."
-    MCPSSEServerConfig:
-      properties:
-        url:
-          type: string
-          title: Url
-        api_key:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Api Key
-      type: object
-      required:
-      - url
-      title: MCPSSEServerConfig
-      description: "Configuration for a single MCP server.\n\nAttributes:\n    url: The server URL\n    api_key: Optional API key for authentication"
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+    ProviderType:
+      type: string
+      enum:
+      - github
+      - gitlab
+      - bitbucket
+      - enterprise_sso
+      title: ProviderType
     ProviderToken:
       properties:
         token:
@@ -117,29 +68,27 @@ components:
           title: Host
       type: object
       title: ProviderToken
-    HTTPValidationError:
+    ValidationError:
       properties:
-        detail:
+        loc:
           items:
-            $ref: '#/components/schemas/ValidationError'
+            anyOf:
+            - type: string
+            - type: integer
           type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    MCPSHTTPServerConfig:
-      properties:
-        url:
+          title: Location
+        msg:
           type: string
-          title: Url
-        api_key:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Api Key
+          title: Message
+        type:
+          type: string
+          title: Error Type
       type: object
       required:
-      - url
-      title: MCPSHTTPServerConfig
+      - loc
+      - msg
+      - type
+      title: ValidationError
     POSTProviderModel:
       properties:
         mcp_config:
@@ -157,6 +106,21 @@ components:
       type: object
       title: POSTProviderModel
       description: Settings for POST requests
+    MCPSSEServerConfig:
+      properties:
+        url:
+          type: string
+          title: Url
+        api_key:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Api Key
+      type: object
+      required:
+      - url
+      title: MCPSSEServerConfig
+      description: "Configuration for a single MCP server.\n\nAttributes:\n    url: The server URL\n    api_key: Optional API key for authentication"
     MCPStdioServerConfig:
       properties:
         name:
@@ -181,14 +145,50 @@ components:
       - command
       title: MCPStdioServerConfig
       description: "Configuration for a MCP server that uses stdio.\n\nAttributes:\n    name: The name of the server\n    command: The command to run the server\n    args: The arguments to pass to the server\n    env: The environment variables to set for the server"
-    ProviderType:
-      type: string
-      enum:
-      - github
-      - gitlab
-      - bitbucket
-      - enterprise_sso
-      title: ProviderType
+    MCPSHTTPServerConfig:
+      properties:
+        url:
+          type: string
+          title: Url
+        api_key:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Api Key
+      type: object
+      required:
+      - url
+      title: MCPSHTTPServerConfig
+    MCPConfig:
+      properties:
+        sse_servers:
+          items:
+            $ref: '#/components/schemas/MCPSSEServerConfig'
+          type: array
+          title: Sse Servers
+        stdio_servers:
+          items:
+            $ref: '#/components/schemas/MCPStdioServerConfig'
+          type: array
+          title: Stdio Servers
+        shttp_servers:
+          items:
+            $ref: '#/components/schemas/MCPSHTTPServerConfig'
+          type: array
+          title: Shttp Servers
+      additionalProperties: false
+      type: object
+      title: MCPConfig
+      description: "Configuration for MCP (Message Control Protocol) settings.\n\nAttributes:\n    sse_servers: List of MCP SSE server configs\n    stdio_servers: List of MCP stdio server configs. These servers will be added to the MCP Router running inside runtime container.\n    shttp_servers: List of MCP HTTP server configs."
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
   securitySchemes:
     APIKeyHeader:
       type: apiKey

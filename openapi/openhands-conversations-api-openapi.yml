@@ -797,120 +797,101 @@ paths:
       - Conversations
 components:
   schemas:
-    CreateMicroagent:
+    ProviderType:
+      type: string
+      enum:
+      - github
+      - gitlab
+      - bitbucket
+      - enterprise_sso
+      title: ProviderType
+    ConversationResponse:
       properties:
-        repo:
+        status:
           type: string
-          title: Repo
-        git_provider:
-          anyOf:
-          - $ref: '#/components/schemas/ProviderType'
-          - type: 'null'
-        title:
+          title: Status
+        conversation_id:
+          type: string
+          title: Conversation Id
+        message:
           anyOf:
           - type: string
           - type: 'null'
-          title: Title
-      type: object
-      required:
-      - repo
-      title: CreateMicroagent
-    SuggestedTask:
-      properties:
-        git_provider:
-          $ref: '#/components/schemas/ProviderType'
-        task_type:
-          $ref: '#/components/schemas/TaskType'
-        repo:
-          type: string
-          title: Repo
-        issue_number:
-          type: integer
-          title: Issue Number
-        title:
-          type: string
-          title: Title
-      type: object
-      required:
-      - git_provider
-      - task_type
-      - repo
-      - issue_number
-      - title
-      title: SuggestedTask
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
           title: Message
-        type:
-          type: string
-          title: Error Type
+        conversation_status:
+          anyOf:
+          - $ref: '#/components/schemas/ConversationStatus'
+          - type: 'null'
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    MCPSHTTPServerConfig:
+      - status
+      - conversation_id
+      title: ConversationResponse
+    ConversationTrigger:
+      type: string
+      enum:
+      - resolver
+      - gui
+      - suggested_task
+      - openhands_api
+      - slack
+      - microagent_management
+      - jira
+      - jira_dc
+      - linear
+      title: ConversationTrigger
+    EventFilter:
       properties:
-        url:
-          type: string
-          title: Url
-        api_key:
+        exclude_hidden:
+          type: boolean
+          title: Exclude Hidden
+          default: false
+        query:
           anyOf:
           - type: string
           - type: 'null'
-          title: Api Key
-      type: object
-      required:
-      - url
-      title: MCPSHTTPServerConfig
-    ConversationInfoResultSet:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/ConversationInfo'
-          type: array
-          title: Results
-        next_page_id:
+          title: Query
+        include_types:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          title: Include Types
+        exclude_types:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          title: Exclude Types
+        source:
           anyOf:
           - type: string
           - type: 'null'
-          title: Next Page Id
+          title: Source
+        start_date:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Start Date
+        end_date:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: End Date
       type: object
-      title: ConversationInfoResultSet
-    MCPStdioServerConfig:
+      title: EventFilter
+    Body_upload_files_api_conversations__conversation_id__upload_files_post:
       properties:
-        name:
-          type: string
-          title: Name
-        command:
-          type: string
-          title: Command
-        args:
+        files:
           items:
             type: string
+            format: binary
           type: array
-          title: Args
-        env:
-          additionalProperties:
-            type: string
-          type: object
-          title: Env
+          title: Files
       type: object
       required:
-      - name
-      - command
-      title: MCPStdioServerConfig
-      description: "Configuration for a MCP server that uses stdio.\n\nAttributes:\n    name: The name of the server\n    command: The command to run the server\n    args: The arguments to pass to the server\n    env: The environment variables to set for the server"
+      - files
+      title: Body_upload_files_api_conversations__conversation_id__upload_files_post
     InitSessionRequest:
       properties:
         repository:
@@ -967,14 +948,72 @@ components:
       additionalProperties: false
       type: object
       title: InitSessionRequest
-    ProviderType:
-      type: string
-      enum:
-      - github
-      - gitlab
-      - bitbucket
-      - enterprise_sso
-      title: ProviderType
+    ConversationInfoResultSet:
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ConversationInfo'
+          type: array
+          title: Results
+        next_page_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Next Page Id
+      type: object
+      title: ConversationInfoResultSet
+    MCPStdioServerConfig:
+      properties:
+        name:
+          type: string
+          title: Name
+        command:
+          type: string
+          title: Command
+        args:
+          items:
+            type: string
+          type: array
+          title: Args
+        env:
+          additionalProperties:
+            type: string
+          type: object
+          title: Env
+      type: object
+      required:
+      - name
+      - command
+      title: MCPStdioServerConfig
+      description: "Configuration for a MCP server that uses stdio.\n\nAttributes:\n    name: The name of the server\n    command: The command to run the server\n    args: The arguments to pass to the server\n    env: The environment variables to set for the server"
+    MCPSHTTPServerConfig:
+      properties:
+        url:
+          type: string
+          title: Url
+        api_key:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Api Key
+      type: object
+      required:
+      - url
+      title: MCPSHTTPServerConfig
+    UpdateConversationRequest:
+      properties:
+        title:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Title
+          description: New conversation title
+      additionalProperties: false
+      type: object
+      required:
+      - title
+      title: UpdateConversationRequest
+      description: Request model for updating conversation metadata.
     TaskType:
       type: string
       enum:
@@ -985,17 +1024,27 @@ components:
       - OPEN_PR
       - CREATE_MICROAGENT
       title: TaskType
-    ProvidersSetModel:
+    ValidationError:
       properties:
-        providers_set:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/ProviderType'
-            type: array
-          - type: 'null'
-          title: Providers Set
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
       type: object
-      title: ProvidersSetModel
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     MCPConfig:
       properties:
         sse_servers:
@@ -1017,6 +1066,96 @@ components:
       type: object
       title: MCPConfig
       description: "Configuration for MCP (Message Control Protocol) settings.\n\nAttributes:\n    sse_servers: List of MCP SSE server configs\n    stdio_servers: List of MCP stdio server configs. These servers will be added to the MCP Router running inside runtime container.\n    shttp_servers: List of MCP HTTP server configs."
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ConversationStatus:
+      type: string
+      enum:
+      - STARTING
+      - RUNNING
+      - STOPPED
+      title: ConversationStatus
+    CreateMicroagent:
+      properties:
+        repo:
+          type: string
+          title: Repo
+        git_provider:
+          anyOf:
+          - $ref: '#/components/schemas/ProviderType'
+          - type: 'null'
+        title:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Title
+      type: object
+      required:
+      - repo
+      title: CreateMicroagent
+    RuntimeStatus:
+      type: string
+      enum:
+      - STATUS$STOPPED
+      - STATUS$BUILDING_RUNTIME
+      - STATUS$STARTING_RUNTIME
+      - STATUS$RUNTIME_STARTED
+      - STATUS$SETTING_UP_WORKSPACE
+      - STATUS$SETTING_UP_GIT_HOOKS
+      - STATUS$READY
+      - STATUS$ERROR
+      - STATUS$ERROR_RUNTIME_DISCONNECTED
+      - STATUS$ERROR_LLM_AUTHENTICATION
+      - STATUS$ERROR_LLM_SERVICE_UNAVAILABLE
+      - STATUS$ERROR_LLM_INTERNAL_SERVER_ERROR
+      - STATUS$ERROR_LLM_OUT_OF_CREDITS
+      - STATUS$ERROR_LLM_CONTENT_POLICY_VIOLATION
+      - CHAT_INTERFACE$AGENT_RATE_LIMITED_STOPPED_MESSAGE
+      - STATUS$GIT_PROVIDER_AUTHENTICATION_ERROR
+      - STATUS$LLM_RETRY
+      - STATUS$ERROR_MEMORY
+      title: RuntimeStatus
+    ProvidersSetModel:
+      properties:
+        providers_set:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/ProviderType'
+            type: array
+          - type: 'null'
+          title: Providers Set
+      type: object
+      title: ProvidersSetModel
+    SuggestedTask:
+      properties:
+        git_provider:
+          $ref: '#/components/schemas/ProviderType'
+        task_type:
+          $ref: '#/components/schemas/TaskType'
+        repo:
+          type: string
+          title: Repo
+        issue_number:
+          type: integer
+          title: Issue Number
+        title:
+          type: string
+          title: Title
+      type: object
+      required:
+      - git_provider
+      - task_type
+      - repo
+      - issue_number
+      - title
+      title: SuggestedTask
     ConversationInfo:
       properties:
         conversation_id:
@@ -1102,53 +1241,6 @@ components:
       - skipped_files
       title: POSTUploadFilesModel
       description: Upload files response model
-    EventFilter:
-      properties:
-        exclude_hidden:
-          type: boolean
-          title: Exclude Hidden
-          default: false
-        query:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Query
-        include_types:
-          anyOf:
-          - items: {}
-            type: array
-          - type: 'null'
-          title: Include Types
-        exclude_types:
-          anyOf:
-          - items: {}
-            type: array
-          - type: 'null'
-          title: Exclude Types
-        source:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Source
-        start_date:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Start Date
-        end_date:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: End Date
-      type: object
-      title: EventFilter
-    ConversationStatus:
-      type: string
-      enum:
-      - STARTING
-      - RUNNING
-      - STOPPED
-      title: ConversationStatus
     MCPSSEServerConfig:
       properties:
         url:
@@ -1164,98 +1256,6 @@ components:
       - url
       title: MCPSSEServerConfig
       description: "Configuration for a single MCP server.\n\nAttributes:\n    url: The server URL\n    api_key: Optional API key for authentication"
-    RuntimeStatus:
-      type: string
-      enum:
-      - STATUS$STOPPED
-      - STATUS$BUILDING_RUNTIME
-      - STATUS$STARTING_RUNTIME
-      - STATUS$RUNTIME_STARTED
-      - STATUS$SETTING_UP_WORKSPACE
-      - STATUS$SETTING_UP_GIT_HOOKS
-      - STATUS$READY
-      - STATUS$ERROR
-      - STATUS$ERROR_RUNTIME_DISCONNECTED
-      - STATUS$ERROR_LLM_AUTHENTICATION
-      - STATUS$ERROR_LLM_SERVICE_UNAVAILABLE
-      - STATUS$ERROR_LLM_INTERNAL_SERVER_ERROR
-      - STATUS$ERROR_LLM_OUT_OF_CREDITS
-      - STATUS$ERROR_LLM_CONTENT_POLICY_VIOLATION
-      - CHAT_INTERFACE$AGENT_RATE_LIMITED_STOPPED_MESSAGE
-      - STATUS$GIT_PROVIDER_AUTHENTICATION_ERROR
-      - STATUS$LLM_RETRY
-      - STATUS$ERROR_MEMORY
-      title: RuntimeStatus
-    ConversationResponse:
-      properties:
-        status:
-          type: string
-          title: Status
-        conversation_id:
-          type: string
-          title: Conversation Id
-        message:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Message
-        conversation_status:
-          anyOf:
-          - $ref: '#/components/schemas/ConversationStatus'
-          - type: 'null'
-      type: object
-      required:
-      - status
-      - conversation_id
-      title: ConversationResponse
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    UpdateConversationRequest:
-      properties:
-        title:
-          type: string
-          maxLength: 200
-          minLength: 1
-          title: Title
-          description: New conversation title
-      additionalProperties: false
-      type: object
-      required:
-      - title
-      title: UpdateConversationRequest
-      description: Request model for updating conversation metadata.
-    ConversationTrigger:
-      type: string
-      enum:
-      - resolver
-      - gui
-      - suggested_task
-      - openhands_api
-      - slack
-      - microagent_management
-      - jira
-      - jira_dc
-      - linear
-      title: ConversationTrigger
-    Body_upload_files_api_conversations__conversation_id__upload_files_post:
-      properties:
-        files:
-          items:
-            type: string
-            format: binary
-          type: array
-          title: Files
-      type: object
-      required:
-      - files
-      title: Body_upload_files_api_conversations__conversation_id__upload_files_post
   securitySchemes:
     APIKeyHeader:
       type: apiKey
